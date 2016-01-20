@@ -1,4 +1,4 @@
-package exercises;
+package exercise2;
 
 import java.util.Set;
 import java.util.TreeSet;
