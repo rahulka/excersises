@@ -1,9 +1,7 @@
-package exercise2;
+package exercise3;
 
 import java.util.Set;
 import java.util.TreeSet;
-
-import exercise3.Student;
 
 public class StudentFiltering {
 
