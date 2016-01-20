@@ -3,7 +3,7 @@ package exercise2;
 import java.util.Set;
 import java.util.TreeSet;
 
-import excercise3.Student;
+import exercise3.Student;
 
 public class StudentFiltering {
 
