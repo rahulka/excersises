@@ -1,6 +1,5 @@
 package exercise1;
 
-import java.math.BigDecimal;
 import java.util.Scanner;
 
 public class InsuranceCalculator {
@@ -13,29 +12,40 @@ public class InsuranceCalculator {
 		System.out.println("Please enter number of boxes:");
 		input = scanner.next();
 		
-		System.out.println("Please enter weight of"+ input +" boxes in whole numbers:");
+		System.out.println("Please enter weight of "+ input +" boxes:");
 		try{
-			Integer numOfBoxes = new BigDecimal(input).intValue();
-			BigDecimal weightOfBox = BigDecimal.ZERO, maxWeightOfBox = BigDecimal.ZERO, totalInsurance = BigDecimal.ZERO;
+			Integer numOfBoxes = Integer.parseInt(input);
+			float weightOfBox = 0;
+			float[] weightsOfBoxes = new float[numOfBoxes];
+			
 			for (int i=0; i<numOfBoxes ; i++){
 				input = scanner.next();
-				weightOfBox = new BigDecimal(input);
-				if (weightOfBox.intValue() > maxWeightOfBox.intValue()){
-					maxWeightOfBox = weightOfBox;
-				}
-				totalInsurance = totalInsurance.add(weightOfBox.multiply(new BigDecimal("2")));
+				weightOfBox = Float.parseFloat(input);
+				weightsOfBoxes[i] = weightOfBox;
 			}
 			
-			totalInsurance = totalInsurance.add(maxWeightOfBox.multiply(new BigDecimal("1.5")));
-			
+			float totalInsurance = calculateInsuranceCost(weightsOfBoxes);
 			System.out.println("Total insurance:"+totalInsurance);
+			
 		}catch(NumberFormatException e){
 			System.out.println("Something went wrong with input transformation");
 			System.out.println(e);
 		}
-		
-
 		scanner.close();
+	}
+
+	public static float calculateInsuranceCost(float[] weightsOfBoxes) {
+		float maxWeightOfBox = 0, totalInsurance = 0;
+		int numOfBoxes = weightsOfBoxes.length;
+		for (int i=0; i<numOfBoxes ; i++){
+			if (weightsOfBoxes[i] > maxWeightOfBox){
+				maxWeightOfBox = weightsOfBoxes[i];
+			}
+			totalInsurance = totalInsurance + weightsOfBoxes[i] * 2;
+		}
+		
+		totalInsurance = totalInsurance + maxWeightOfBox * 1.5F;
+		return totalInsurance;
 	}
 
 }

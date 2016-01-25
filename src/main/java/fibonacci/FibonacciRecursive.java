@@ -11,6 +11,11 @@ public class FibonacciRecursive {
 		System.out.println("Please enter length of the fibonacci series you want:");
 		input = scanner.next();
 		int length = Integer.parseInt(input);
+		printFibonacciSeries(length);
+		scanner.close();
+	}
+
+	private static void printFibonacciSeries(int length) {
 		if(length > 0){
 			System.out.println("Fibonacci series:");
 			for (int i = 0; i < length; i++) {
@@ -18,9 +23,9 @@ public class FibonacciRecursive {
 				
 			}
 		}
-		scanner.close();
 	}
 	
+	//Starts from 0
 	public static int fibonacci(int len){
 		if(len == 0){
 			return 0;
